@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using xEyedropper.Properties;
 
@@ -18,6 +20,31 @@ namespace xEyedropper
 
         [STAThread]
         static void Main()
+        {
+            var assembly = typeof(Program).Assembly;
+            var attribute = (GuidAttribute)assembly.GetCustomAttributes(typeof(GuidAttribute), true)[0];
+            var id = attribute.Value;
+
+            var mutex = new Mutex(true, id);
+
+            if (mutex.WaitOne(TimeSpan.Zero, true))
+            {
+                try
+                {
+                    StartApp();
+                }
+                finally
+                {
+                    mutex.ReleaseMutex();
+                }
+            }
+            else
+            {
+                ExitApp();
+            }
+        }
+
+        private static void StartApp()
         {
             if (Settings.Default.UpgradeRequired)
             {
@@ -67,6 +94,11 @@ namespace xEyedropper
 
             Application.EnableVisualStyles();
             Application.Run();
+        }
+
+        private static void ExitApp()
+        {
+            Application.Exit();
         }
 
         private static void Editor_Click(object sender, EventArgs e)
