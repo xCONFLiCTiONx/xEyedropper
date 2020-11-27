@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace xEyedropper
@@ -12,5 +13,9 @@ namespace xEyedropper
         internal const UInt32 SWP_NOSIZE = 0x0001;
         internal const UInt32 SWP_NOMOVE = 0x0002;
         internal const UInt32 SWP_SHOWWINDOW = 0x0040;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetCursorPos(out Point lpPoint);
     }
 }

@@ -13,6 +13,13 @@ namespace xEyedropper
         private GlobalHotkey hotkey;
         bool ColorValueIsHex;
 
+        int screenLeft = SystemInformation.VirtualScreen.Left;
+        int screenTop = SystemInformation.VirtualScreen.Top;
+        int screenWidth = SystemInformation.VirtualScreen.Width;
+        int screenHeight = SystemInformation.VirtualScreen.Height;
+
+        int screens = 0;
+
         public PreviewImage()
         {
             InitializeComponent();
@@ -33,16 +40,16 @@ namespace xEyedropper
             {
                 Console.WriteLine("Hotkey registered.");
             }
-
-            int screenLeft = SystemInformation.VirtualScreen.Left;
-            int screenTop = SystemInformation.VirtualScreen.Top;
-            int screenWidth = SystemInformation.VirtualScreen.Width;
-            int screenHeight = SystemInformation.VirtualScreen.Height;
+            
+            foreach (Screen screen in Screen.AllScreens)
+            {
+                screens++;
+            }
 
             this.Size = new Size(screenWidth, screenHeight);
             this.Location = new Point(screenLeft, screenTop);
 
-            panel1.Location = new Point(Cursor.Position.X + 30, Cursor.Position.Y - Height / 2);
+            panel1.Location = new Point((Cursor.Position.X + 30) + screenWidth / screens, ((Cursor.Position.Y - Height) / 2) + screenHeight);
 
             thread = new Thread(SetColorLoop)
             {
@@ -111,25 +118,29 @@ namespace xEyedropper
         {
             while (true)
             {
-                NativeMethods.SetWindowPos(this.Handle, NativeMethods.HWND_TOPMOST, 0, 0, 0, 0, NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOSIZE | NativeMethods.SWP_SHOWWINDOW);
                 SetColor(GetColorFromPixel(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 
         public void SetColor(Color color)
         {
+            this.Invoke(new Action(() =>
+            {
+                NativeMethods.SetWindowPos(this.Handle, NativeMethods.HWND_TOPMOST, 0, 0, 0, 0, NativeMethods.SWP_NOMOVE | NativeMethods.SWP_NOSIZE | NativeMethods.SWP_SHOWWINDOW);
+            }));
+
             if ((Cursor.Position.X + 256) > SystemInformation.VirtualScreen.Right)
             {
                 this.Invoke(new Action(() =>
                 {
-                    panel1.Location = new Point(Cursor.Position.X - 256, Cursor.Position.Y - 30);
+                    panel1.Location = new Point(Cursor.Position.X - 256 + (screenWidth / screens), (Cursor.Position.Y) - (panel1.Height / 2));
                 }));
             }
             else
             {
                 this.Invoke(new Action(() =>
                 {
-                    panel1.Location = new Point(Cursor.Position.X + 30, Cursor.Position.Y - 30);
+                    panel1.Location = new Point(Cursor.Position.X + 30 + (screenWidth / screens), Cursor.Position.Y - (panel1.Height / 2));
                 }));
             }
 

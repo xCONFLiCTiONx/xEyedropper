@@ -6,7 +6,7 @@ namespace xEyedropper
     {
         internal static string HexConverter(Color c)
         {
-            return $"#{c.R:X2}, {c.G:X2}, {c.B:X2}";
+            return $"#{c.R:X2}{c.G:X2}{c.B:X2}";
         }
 
         internal static string RGBConverter(Color c)
