@@ -17,7 +17,7 @@ namespace xEyedropper
         int screenTop = SystemInformation.VirtualScreen.Top;
         int screenWidth = SystemInformation.VirtualScreen.Width;
         int screenHeight = SystemInformation.VirtualScreen.Height;
-
+        int width = 0;
         int screens = 0;
 
         public PreviewImage()
@@ -48,6 +48,16 @@ namespace xEyedropper
 
             this.Size = new Size(screenWidth, screenHeight);
             this.Location = new Point(screenLeft, screenTop);
+
+            Screen screenCurrent = Screen.FromPoint(Cursor.Position);
+            if (screens > 1)
+            {
+                width = screenCurrent.Bounds.Width;
+            }
+            else
+            {
+                width = 0;
+            }
 
             panel1.Location = new Point((Cursor.Position.X + 30) + screenWidth / screens, ((Cursor.Position.Y - Height) / 2) + screenHeight);
 
@@ -133,28 +143,14 @@ namespace xEyedropper
             {
                 this.Invoke(new Action(() =>
                 {
-                    if (screens > 1)
-                    {
-                        panel1.Location = new Point(Cursor.Position.X - 256 + (screenWidth / screens), (Cursor.Position.Y) - (panel1.Height / 2));
-                    }
-                    else
-                    {
-                        panel1.Location = new Point(Cursor.Position.X - 256, Cursor.Position.Y - 30);
-                    }
+                    panel1.Location = new Point(Cursor.Position.X - 256 + width, Cursor.Position.Y - (panel1.Height / 2));
                 }));
             }
             else
             {
                 this.Invoke(new Action(() =>
                 {
-                    if (screens > 1)
-                    {
-                        panel1.Location = new Point(Cursor.Position.X + 30 + (screenWidth / screens), Cursor.Position.Y - (panel1.Height / 2));
-                    }
-                    else
-                    {
-                        panel1.Location = new Point(Cursor.Position.X + 30, Cursor.Position.Y - 30);
-                    }
+                    panel1.Location = new Point(Cursor.Position.X + 30 + width, Cursor.Position.Y - (panel1.Height / 2));
                 }));
             }
 
