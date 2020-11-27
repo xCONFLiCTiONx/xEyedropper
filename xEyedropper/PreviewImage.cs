@@ -133,14 +133,28 @@ namespace xEyedropper
             {
                 this.Invoke(new Action(() =>
                 {
-                    panel1.Location = new Point(Cursor.Position.X - 256 + (screenWidth / screens), (Cursor.Position.Y) - (panel1.Height / 2));
+                    if (screens > 1)
+                    {
+                        panel1.Location = new Point(Cursor.Position.X - 256 + (screenWidth / screens), (Cursor.Position.Y) - (panel1.Height / 2));
+                    }
+                    else
+                    {
+                        panel1.Location = new Point(Cursor.Position.X - 256, Cursor.Position.Y - 30);
+                    }
                 }));
             }
             else
             {
                 this.Invoke(new Action(() =>
                 {
-                    panel1.Location = new Point(Cursor.Position.X + 30 + (screenWidth / screens), Cursor.Position.Y - (panel1.Height / 2));
+                    if (screens > 1)
+                    {
+                        panel1.Location = new Point(Cursor.Position.X + 30 + (screenWidth / screens), Cursor.Position.Y - (panel1.Height / 2));
+                    }
+                    else
+                    {
+                        panel1.Location = new Point(Cursor.Position.X + 30, Cursor.Position.Y - 30);
+                    }
                 }));
             }
 
