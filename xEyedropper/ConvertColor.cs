@@ -6,12 +6,12 @@ namespace xEyedropper
     {
         internal static string HexConverter(Color c)
         {
-            return "#" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
+            return $"#{c.R:X2}, {c.G:X2}, {c.B:X2}";
         }
 
         internal static string RGBConverter(Color c)
         {
-            return c.R.ToString() + ", " + c.G.ToString() + ", " + c.B.ToString();
+            return $"{c.R}, {c.G}, {c.B}";
         }
     }
 }
