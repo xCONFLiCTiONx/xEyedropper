@@ -40,7 +40,7 @@ namespace xEyedropper
             {
                 Console.WriteLine("Hotkey registered.");
             }
-            
+
             foreach (Screen screen in Screen.AllScreens)
             {
                 screens++;
