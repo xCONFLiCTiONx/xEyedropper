@@ -11,5 +11,56 @@
     <Setting Name="ColorRGB" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CustomColor1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1973790</Value>
+    </Setting>
+    <Setting Name="CustomColor2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5147488</Value>
+    </Setting>
+    <Setting Name="CustomColor3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">14064726</Value>
+    </Setting>
+    <Setting Name="CustomColor4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">11062965</Value>
+    </Setting>
+    <Setting Name="CustomColor5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16042642</Value>
+    </Setting>
+    <Setting Name="CustomColor6" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="CustomColor7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="CustomColor8" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="CustomColor9" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">14474460</Value>
+    </Setting>
+    <Setting Name="CustomColor10" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">7884582</Value>
+    </Setting>
+    <Setting Name="CustomColor11" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8756694</Value>
+    </Setting>
+    <Setting Name="CustomColor12" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10197915</Value>
+    </Setting>
+    <Setting Name="CustomColor13" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="CustomColor14" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="CustomColor15" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="CustomColor16" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">16777215</Value>
+    </Setting>
+    <Setting Name="SaveCustomColors" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

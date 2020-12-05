@@ -7,6 +7,7 @@ namespace Hotkeys
     public class Constants
     {
         public const int NOMOD = 0x0000;
+        public const int MOD_CONTROL = 0x0002;
         public const int WM_HOTKEY_MSG_ID = 0x0312;
     }
 

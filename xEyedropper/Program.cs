@@ -10,11 +10,7 @@ namespace xEyedropper
     static class Program
     {
         static NotifyIcon notifyIcon;
-        static MenuItem menuItemHTML;
-        static MenuItem menuItemRGB;
-        static MenuItem menuItemEditor;
-        static MenuItem menuItemGrabber;
-        static MenuItem menuItemClose;
+        static MenuItem menuItemHTML, menuItemRGB, menuItemSaveCustomColor, menuItemResetCustomColor, menuItemEditor, menuItemGrabber, menuItemClose;
 
         internal static ColorDialog colorDialog1 = new ColorDialog();
 
@@ -64,24 +60,35 @@ namespace xEyedropper
 
             menuItemHTML = new MenuItem("&HTML");
             menuItemRGB = new MenuItem("&RGB");
+            menuItemSaveCustomColor = new MenuItem("&Save Custom Colors");
+            menuItemResetCustomColor = new MenuItem("&Reset Custom Colors");
             menuItemEditor = new MenuItem("&Editor");
             menuItemGrabber = new MenuItem("&Grabber");
             menuItemClose = new MenuItem("&Close");
 
             menuItemHTML.Click += MenuItemHTML_Click;
             menuItemRGB.Click += MenuItemRGB_Click;
+            menuItemSaveCustomColor.Click += MenuItemSaveCustomColor_Click;
+            menuItemResetCustomColor.Click += MenuItemResetCustomColor_Click;
             menuItemEditor.Click += Editor_Click;
             menuItemGrabber.Click += Grabber_Click;
             menuItemClose.Click += MenuItemClose_Click;
 
             contextMenu.MenuItems.Add(menuItemHTML);
             contextMenu.MenuItems.Add(menuItemRGB);
+            contextMenu.MenuItems.Add(menuItemSaveCustomColor);
+            contextMenu.MenuItems.Add(menuItemResetCustomColor);
             contextMenu.MenuItems.Add(menuItemEditor);
             contextMenu.MenuItems.Add(menuItemGrabber);
             contextMenu.MenuItems.Add(menuItemClose);
 
             notifyIcon.ContextMenu = contextMenu;
             notifyIcon.MouseClick += NotifyIcon_MouseClick;
+
+            if (Settings.Default.SaveCustomColors)
+            {
+                menuItemSaveCustomColor.Checked = true;
+            }
 
             if (Settings.Default.ColorHTML)
             {
@@ -94,6 +101,33 @@ namespace xEyedropper
 
             Application.EnableVisualStyles();
             Application.Run();
+        }
+
+        private static void MenuItemResetCustomColor_Click(object sender, EventArgs e)
+        {
+            if (menuItemResetCustomColor.Checked)
+            {
+                menuItemResetCustomColor.Checked = false;
+            }
+            else
+            {
+                menuItemResetCustomColor.Checked = true;
+            }
+        }
+
+        private static void MenuItemSaveCustomColor_Click(object sender, EventArgs e)
+        {
+            if (menuItemSaveCustomColor.Checked)
+            {
+                menuItemSaveCustomColor.Checked = false;
+                Settings.Default.SaveCustomColors = false;
+            }
+            else
+            {
+                menuItemSaveCustomColor.Checked = true;
+                Settings.Default.SaveCustomColors = true;
+            }
+            Settings.Default.Save();
         }
 
         private static void ExitApp()
@@ -111,6 +145,15 @@ namespace xEyedropper
             }
             catch { /*ignore*/ }
 
+            if (menuItemResetCustomColor.Checked)
+            {
+                colorDialog1.CustomColors = new int[] { 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215 };
+            }
+            else
+            {
+                colorDialog1.CustomColors = new int[] { Settings.Default.CustomColor1, Settings.Default.CustomColor2, Settings.Default.CustomColor3, Settings.Default.CustomColor4, Settings.Default.CustomColor5, Settings.Default.CustomColor6, Settings.Default.CustomColor7, Settings.Default.CustomColor8, Settings.Default.CustomColor9, Settings.Default.CustomColor10, Settings.Default.CustomColor11, Settings.Default.CustomColor12, Settings.Default.CustomColor13, Settings.Default.CustomColor14, Settings.Default.CustomColor15, Settings.Default.CustomColor16 };
+            }
+
             colorDialog1.ShowDialog();
 
             Color selectedColor = colorDialog1.Color;
@@ -122,6 +165,27 @@ namespace xEyedropper
             else if (Settings.Default.ColorRGB)
             {
                 Clipboard.SetText(ConvertColor.RGBConverter(selectedColor));
+            }
+
+            if (Settings.Default.SaveCustomColors)
+            {
+                Settings.Default.CustomColor1 = colorDialog1.CustomColors[0];
+                Settings.Default.CustomColor2 = colorDialog1.CustomColors[1];
+                Settings.Default.CustomColor3 = colorDialog1.CustomColors[2];
+                Settings.Default.CustomColor4 = colorDialog1.CustomColors[3];
+                Settings.Default.CustomColor5 = colorDialog1.CustomColors[4];
+                Settings.Default.CustomColor6 = colorDialog1.CustomColors[5];
+                Settings.Default.CustomColor7 = colorDialog1.CustomColors[6];
+                Settings.Default.CustomColor8 = colorDialog1.CustomColors[7];
+                Settings.Default.CustomColor9 = colorDialog1.CustomColors[8];
+                Settings.Default.CustomColor10 = colorDialog1.CustomColors[9];
+                Settings.Default.CustomColor11 = colorDialog1.CustomColors[10];
+                Settings.Default.CustomColor12 = colorDialog1.CustomColors[11];
+                Settings.Default.CustomColor13 = colorDialog1.CustomColors[12];
+                Settings.Default.CustomColor14 = colorDialog1.CustomColors[13];
+                Settings.Default.CustomColor15 = colorDialog1.CustomColors[14];
+                Settings.Default.CustomColor16 = colorDialog1.CustomColors[15];
+                Settings.Default.Save();
             }
         }
 

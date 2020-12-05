@@ -58,5 +58,209 @@ namespace xEyedropper.Properties {
                 this["ColorRGB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1973790")]
+        public int CustomColor1 {
+            get {
+                return ((int)(this["CustomColor1"]));
+            }
+            set {
+                this["CustomColor1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5147488")]
+        public int CustomColor2 {
+            get {
+                return ((int)(this["CustomColor2"]));
+            }
+            set {
+                this["CustomColor2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14064726")]
+        public int CustomColor3 {
+            get {
+                return ((int)(this["CustomColor3"]));
+            }
+            set {
+                this["CustomColor3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("11062965")]
+        public int CustomColor4 {
+            get {
+                return ((int)(this["CustomColor4"]));
+            }
+            set {
+                this["CustomColor4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16042642")]
+        public int CustomColor5 {
+            get {
+                return ((int)(this["CustomColor5"]));
+            }
+            set {
+                this["CustomColor5"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor6 {
+            get {
+                return ((int)(this["CustomColor6"]));
+            }
+            set {
+                this["CustomColor6"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor7 {
+            get {
+                return ((int)(this["CustomColor7"]));
+            }
+            set {
+                this["CustomColor7"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor8 {
+            get {
+                return ((int)(this["CustomColor8"]));
+            }
+            set {
+                this["CustomColor8"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("14474460")]
+        public int CustomColor9 {
+            get {
+                return ((int)(this["CustomColor9"]));
+            }
+            set {
+                this["CustomColor9"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7884582")]
+        public int CustomColor10 {
+            get {
+                return ((int)(this["CustomColor10"]));
+            }
+            set {
+                this["CustomColor10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8756694")]
+        public int CustomColor11 {
+            get {
+                return ((int)(this["CustomColor11"]));
+            }
+            set {
+                this["CustomColor11"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10197915")]
+        public int CustomColor12 {
+            get {
+                return ((int)(this["CustomColor12"]));
+            }
+            set {
+                this["CustomColor12"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor13 {
+            get {
+                return ((int)(this["CustomColor13"]));
+            }
+            set {
+                this["CustomColor13"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor14 {
+            get {
+                return ((int)(this["CustomColor14"]));
+            }
+            set {
+                this["CustomColor14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor15 {
+            get {
+                return ((int)(this["CustomColor15"]));
+            }
+            set {
+                this["CustomColor15"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("16777215")]
+        public int CustomColor16 {
+            get {
+                return ((int)(this["CustomColor16"]));
+            }
+            set {
+                this["CustomColor16"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SaveCustomColors {
+            get {
+                return ((bool)(this["SaveCustomColors"]));
+            }
+            set {
+                this["SaveCustomColors"] = value;
+            }
+        }
     }
 }
