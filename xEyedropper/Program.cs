@@ -10,7 +10,7 @@ namespace xEyedropper
     static class Program
     {
         static NotifyIcon notifyIcon;
-        static MenuItem menuItemHTML, menuItemRGB, menuItemSaveCustomColor, menuItemResetCustomColor, menuItemEditor, menuItemGrabber, menuItemClose;
+        static MenuItem menuItemHTML, menuItemRGB, editorOptions, menuItemSaveCustomColor, menuItemResetCustomColor, menuItemEditor, menuItemGrabber, menuItemClose;
 
         internal static ColorDialog colorDialog1 = new ColorDialog();
 
@@ -60,8 +60,9 @@ namespace xEyedropper
 
             menuItemHTML = new MenuItem("&HTML");
             menuItemRGB = new MenuItem("&RGB");
-            menuItemSaveCustomColor = new MenuItem("&Save Custom Colors");
-            menuItemResetCustomColor = new MenuItem("&Reset Custom Colors");
+            editorOptions = new MenuItem("&Editor Options");
+            editorOptions.MenuItems.Add(menuItemSaveCustomColor = new MenuItem("&Save Custom Colors"));
+            editorOptions.MenuItems.Add(menuItemResetCustomColor = new MenuItem("&Reset Custom Colors"));
             menuItemEditor = new MenuItem("&Editor");
             menuItemGrabber = new MenuItem("&Grabber");
             menuItemClose = new MenuItem("&Close");
@@ -76,8 +77,7 @@ namespace xEyedropper
 
             contextMenu.MenuItems.Add(menuItemHTML);
             contextMenu.MenuItems.Add(menuItemRGB);
-            contextMenu.MenuItems.Add(menuItemSaveCustomColor);
-            contextMenu.MenuItems.Add(menuItemResetCustomColor);
+            contextMenu.MenuItems.Add(editorOptions);
             contextMenu.MenuItems.Add(menuItemEditor);
             contextMenu.MenuItems.Add(menuItemGrabber);
             contextMenu.MenuItems.Add(menuItemClose);
