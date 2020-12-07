@@ -148,6 +148,8 @@ namespace xEyedropper
             if (menuItemResetCustomColor.Checked)
             {
                 colorDialog1.CustomColors = new int[] { 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215 };
+
+                SaveCustomColors();
             }
             else
             {
@@ -169,24 +171,29 @@ namespace xEyedropper
 
             if (Settings.Default.SaveCustomColors)
             {
-                Settings.Default.CustomColor1 = colorDialog1.CustomColors[0];
-                Settings.Default.CustomColor2 = colorDialog1.CustomColors[1];
-                Settings.Default.CustomColor3 = colorDialog1.CustomColors[2];
-                Settings.Default.CustomColor4 = colorDialog1.CustomColors[3];
-                Settings.Default.CustomColor5 = colorDialog1.CustomColors[4];
-                Settings.Default.CustomColor6 = colorDialog1.CustomColors[5];
-                Settings.Default.CustomColor7 = colorDialog1.CustomColors[6];
-                Settings.Default.CustomColor8 = colorDialog1.CustomColors[7];
-                Settings.Default.CustomColor9 = colorDialog1.CustomColors[8];
-                Settings.Default.CustomColor10 = colorDialog1.CustomColors[9];
-                Settings.Default.CustomColor11 = colorDialog1.CustomColors[10];
-                Settings.Default.CustomColor12 = colorDialog1.CustomColors[11];
-                Settings.Default.CustomColor13 = colorDialog1.CustomColors[12];
-                Settings.Default.CustomColor14 = colorDialog1.CustomColors[13];
-                Settings.Default.CustomColor15 = colorDialog1.CustomColors[14];
-                Settings.Default.CustomColor16 = colorDialog1.CustomColors[15];
-                Settings.Default.Save();
+                SaveCustomColors();
             }
+        }
+
+        private static void SaveCustomColors()
+        {
+            Settings.Default.CustomColor1 = colorDialog1.CustomColors[0];
+            Settings.Default.CustomColor2 = colorDialog1.CustomColors[1];
+            Settings.Default.CustomColor3 = colorDialog1.CustomColors[2];
+            Settings.Default.CustomColor4 = colorDialog1.CustomColors[3];
+            Settings.Default.CustomColor5 = colorDialog1.CustomColors[4];
+            Settings.Default.CustomColor6 = colorDialog1.CustomColors[5];
+            Settings.Default.CustomColor7 = colorDialog1.CustomColors[6];
+            Settings.Default.CustomColor8 = colorDialog1.CustomColors[7];
+            Settings.Default.CustomColor9 = colorDialog1.CustomColors[8];
+            Settings.Default.CustomColor10 = colorDialog1.CustomColors[9];
+            Settings.Default.CustomColor11 = colorDialog1.CustomColors[10];
+            Settings.Default.CustomColor12 = colorDialog1.CustomColors[11];
+            Settings.Default.CustomColor13 = colorDialog1.CustomColors[12];
+            Settings.Default.CustomColor14 = colorDialog1.CustomColors[13];
+            Settings.Default.CustomColor15 = colorDialog1.CustomColors[14];
+            Settings.Default.CustomColor16 = colorDialog1.CustomColors[15];
+            Settings.Default.Save();
         }
 
         private static void MenuItemRGB_Click(object sender, EventArgs e)
