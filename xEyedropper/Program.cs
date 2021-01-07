@@ -137,6 +137,14 @@ namespace xEyedropper
 
         private static void Editor_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string color = Clipboard.GetText();
+                Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ColorTranslator.FromHtml(color);
+            }
+            catch
+            {
+            }
             using (colorDialog1 = new ColorDialogWithTitle())
             {
 
