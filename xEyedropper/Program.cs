@@ -140,7 +140,9 @@ namespace xEyedropper
             try
             {
                 string color = Clipboard.GetText();
-                Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ColorTranslator.FromHtml(color);
+                Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ConvertColor.RGBConverter(ColorTranslator.FromHtml(color));
+                Settings.Default.Save();
+                Settings.Default.Reload();
             }
             catch
             {
@@ -151,9 +153,6 @@ namespace xEyedropper
                 try
                 {
                     string color = Clipboard.GetText();
-                    Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ColorTranslator.FromHtml(color);
-                    Settings.Default.Save();
-                    Settings.Default.Reload();
                     colorDialog1.FullOpen = true;
                     colorDialog1.Color = ColorTranslator.FromHtml(color);
                 }
