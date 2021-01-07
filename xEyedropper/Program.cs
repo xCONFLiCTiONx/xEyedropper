@@ -137,9 +137,10 @@ namespace xEyedropper
 
         private static void Editor_Click(object sender, EventArgs e)
         {
-            try
+            using (colorDialog1 = new ColorDialogWithTitle())
             {
-                using (colorDialog1 = new ColorDialogWithTitle())
+
+                try
                 {
                     string color = Clipboard.GetText();
                     Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ColorTranslator.FromHtml(color);
@@ -148,36 +149,39 @@ namespace xEyedropper
                     colorDialog1.FullOpen = true;
                     colorDialog1.Color = ColorTranslator.FromHtml(color);
                 }
-            }
-            catch { /*ignore*/ }
+                catch
+                {
+                    Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color Dialog";
+                }
 
-            if (menuItemResetCustomColor.Checked)
-            {
-                colorDialog1.CustomColors = new int[] { 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215 };
+                if (menuItemResetCustomColor.Checked)
+                {
+                    colorDialog1.CustomColors = new int[] { 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215, 16777215 };
 
-                SaveCustomColors();
-            }
-            else
-            {
-                colorDialog1.CustomColors = new int[] { Settings.Default.CustomColor1, Settings.Default.CustomColor2, Settings.Default.CustomColor3, Settings.Default.CustomColor4, Settings.Default.CustomColor5, Settings.Default.CustomColor6, Settings.Default.CustomColor7, Settings.Default.CustomColor8, Settings.Default.CustomColor9, Settings.Default.CustomColor10, Settings.Default.CustomColor11, Settings.Default.CustomColor12, Settings.Default.CustomColor13, Settings.Default.CustomColor14, Settings.Default.CustomColor15, Settings.Default.CustomColor16 };
-            }
+                    SaveCustomColors();
+                }
+                else
+                {
+                    colorDialog1.CustomColors = new int[] { Settings.Default.CustomColor1, Settings.Default.CustomColor2, Settings.Default.CustomColor3, Settings.Default.CustomColor4, Settings.Default.CustomColor5, Settings.Default.CustomColor6, Settings.Default.CustomColor7, Settings.Default.CustomColor8, Settings.Default.CustomColor9, Settings.Default.CustomColor10, Settings.Default.CustomColor11, Settings.Default.CustomColor12, Settings.Default.CustomColor13, Settings.Default.CustomColor14, Settings.Default.CustomColor15, Settings.Default.CustomColor16 };
+                }
 
-            colorDialog1.ShowDialog();
+                colorDialog1.ShowDialog();
 
-            Color selectedColor = colorDialog1.Color;
+                Color selectedColor = colorDialog1.Color;
 
-            if (Settings.Default.ColorHTML)
-            {
-                Clipboard.SetText(ConvertColor.HexConverter(selectedColor));
-            }
-            else if (Settings.Default.ColorRGB)
-            {
-                Clipboard.SetText(ConvertColor.RGBConverter(selectedColor));
-            }
+                if (Settings.Default.ColorHTML)
+                {
+                    Clipboard.SetText(ConvertColor.HexConverter(selectedColor));
+                }
+                else if (Settings.Default.ColorRGB)
+                {
+                    Clipboard.SetText(ConvertColor.RGBConverter(selectedColor));
+                }
 
-            if (Settings.Default.SaveCustomColors)
-            {
-                SaveCustomColors();
+                if (Settings.Default.SaveCustomColors)
+                {
+                    SaveCustomColors();
+                }
             }
         }
 
@@ -207,7 +211,7 @@ namespace xEyedropper
             try
             {
                 string color = Clipboard.GetText();
-                
+
                 Clipboard.SetText(ConvertColor.RGBConverter(ColorTranslator.FromHtml(color)));
             }
             catch (Exception)
