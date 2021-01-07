@@ -204,6 +204,17 @@ namespace xEyedropper
 
         private static void MenuItemRGB_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string color = Clipboard.GetText();
+                
+                Clipboard.SetText(ConvertColor.RGBConverter(ColorTranslator.FromHtml(color)));
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+
             menuItemHTML.Checked = false;
             menuItemRGB.Checked = true;
             Settings.Default.ColorHTML = false;
@@ -215,6 +226,17 @@ namespace xEyedropper
 
         private static void MenuItemHTML_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string color = Clipboard.GetText();
+
+                Clipboard.SetText(ConvertColor.HexConverter(ColorTranslator.FromHtml(color)));
+            }
+            catch (Exception)
+            {
+                // ignore
+            }
+
             menuItemRGB.Checked = false;
             menuItemHTML.Checked = true;
             Settings.Default.ColorRGB = false;
