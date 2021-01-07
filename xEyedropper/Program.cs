@@ -146,6 +146,9 @@ namespace xEyedropper
             }
             catch
             {
+                Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color Dialog";
+                Settings.Default.Save();
+                Settings.Default.Reload();
             }
             using (colorDialog1 = new ColorDialogWithTitle())
             {
@@ -158,7 +161,6 @@ namespace xEyedropper
                 }
                 catch
                 {
-                    Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color Dialog";
                 }
 
                 if (menuItemResetCustomColor.Checked)
