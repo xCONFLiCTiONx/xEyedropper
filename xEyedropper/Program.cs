@@ -12,7 +12,7 @@ namespace xEyedropper
         static NotifyIcon notifyIcon;
         static MenuItem menuItemHTML, menuItemRGB, editorOptions, menuItemSaveCustomColor, menuItemResetCustomColor, menuItemEditor, menuItemGrabber, menuItemClose;
 
-        internal static ColorDialog colorDialog1 = new ColorDialog();
+        internal static ColorDialogWithTitle colorDialog1;
 
         [STAThread]
         static void Main()
@@ -139,9 +139,15 @@ namespace xEyedropper
         {
             try
             {
-                string color = Clipboard.GetText();
-                colorDialog1.FullOpen = true;
-                colorDialog1.Color = ColorTranslator.FromHtml(color);
+                using (colorDialog1 = new ColorDialogWithTitle())
+                {
+                    string color = Clipboard.GetText();
+                    Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ColorTranslator.FromHtml(color);
+                    Settings.Default.Save();
+                    Settings.Default.Reload();
+                    colorDialog1.FullOpen = true;
+                    colorDialog1.Color = ColorTranslator.FromHtml(color);
+                }
             }
             catch { /*ignore*/ }
 

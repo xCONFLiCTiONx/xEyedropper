@@ -262,5 +262,17 @@ namespace xEyedropper.Properties {
                 this["SaveCustomColors"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Color Dialog")]
+        public string ColorDialogWithTitle_DefaultTitle {
+            get {
+                return ((string)(this["ColorDialogWithTitle_DefaultTitle"]));
+            }
+            set {
+                this["ColorDialogWithTitle_DefaultTitle"] = value;
+            }
+        }
     }
 }

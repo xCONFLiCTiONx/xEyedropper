@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorDialogWithTitle.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ConvertColor.cs" />
     <Compile Include="Hotkeys.cs" />
     <Compile Include="NativeMethods.cs" />
