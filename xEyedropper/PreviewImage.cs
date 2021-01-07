@@ -94,15 +94,18 @@ namespace xEyedropper
         {
             thread.Abort();
 
-            Color color = GetColorFromPixel(Cursor.Position.X, Cursor.Position.Y);
+            if (e.Button == MouseButtons.Left)
+            {
+                Color color = GetColorFromPixel(Cursor.Position.X, Cursor.Position.Y);
 
-            if (Properties.Settings.Default.ColorHTML)
-            {
-                Clipboard.SetText(ConvertColor.HexConverter(color));
-            }
-            else if (Properties.Settings.Default.ColorRGB)
-            {
-                Clipboard.SetText(ConvertColor.RGBConverter(color));
+                if (Properties.Settings.Default.ColorHTML)
+                {
+                    Clipboard.SetText(ConvertColor.HexConverter(color));
+                }
+                else if (Properties.Settings.Default.ColorRGB)
+                {
+                    Clipboard.SetText(ConvertColor.RGBConverter(color));
+                }
             }
 
             this.Close();
