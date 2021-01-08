@@ -137,12 +137,23 @@ namespace xEyedropper
 
         private static void Editor_Click(object sender, EventArgs e)
         {
+
             try
             {
                 string color = Clipboard.GetText();
-                Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ConvertColor.RGBConverter(ColorTranslator.FromHtml(color));
-                Settings.Default.Save();
-                Settings.Default.Reload();
+                if (!string.IsNullOrEmpty(color))
+                {
+                    Color col = ColorTranslator.FromHtml(color);
+                    Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color in Clipboard: " + ConvertColor.RGBConverter(col);
+                    Settings.Default.Save();
+                    Settings.Default.Reload();
+                }
+                else
+                {
+                    Settings.Default.ColorDialogWithTitle_DefaultTitle = "Color Dialog";
+                    Settings.Default.Save();
+                    Settings.Default.Reload();
+                }
             }
             catch
             {
@@ -150,12 +161,14 @@ namespace xEyedropper
                 Settings.Default.Save();
                 Settings.Default.Reload();
             }
+
             using (colorDialog1 = new ColorDialogWithTitle())
             {
+                colorDialog1.FullOpen = true;
+
                 try
                 {
                     string color = Clipboard.GetText();
-                    colorDialog1.FullOpen = true;
                     colorDialog1.Color = ColorTranslator.FromHtml(color);
                 }
                 catch
